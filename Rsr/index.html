@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ApexCode Studios — инновационные решения для вашего бизнеса с гарантией результата." />
+  <meta name="keywords" content="веб-разработка, мобильные приложения, облачные решения, ApexCode Studios" />
+  <title>ApexCode Studios</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <meta name="theme-color" content="#000000" />
+</head>
+<body class="dark-theme">
+
+  <!-- Кастомный курсор -->
+  <div class="custom-cursor"></div>
+
+  <!-- Прелоадер -->
+  <div id="preloader">
+    <div class="logo-preloader animated-logo">ApexCode</div>
+    <p>Создаем будущее...</p>
+  </div>
+
+  <!-- Навигация -->
+  <header>
+    <nav class="navbar">
+      <div class="logo animated-logo">ApexCode</div>
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="Поиск по сайту..." />
+        <i class="fas fa-search micro-animated"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link">Главная</a></li>
+        <li><a href="#services" class="nav-link">Услуги</a></li>
+        <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+        <li><a href="#about" class="nav-link">О нас</a></li>
+        <li><a href="#contact" class="nav-link">Контакты</a></li>
+      </ul>
+      <div class="mode-toggle">
+        <button id="mode-novice" class="btn active">Для новичков</button>
+        <button id="mode-pro" class="btn">Для профи</button>
+      </div>
+      <div class="theme-toggle">
+        <i class="fas fa-sun micro-animated" id="theme-icon"></i>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Чат-бот -->
+  <div id="chat-bot" class="chat-widget">
+    <button id="bot-toggle" class="btn chat-btn"><i class="fas fa-robot micro-animated"></i> Ваш помощник</button>
+    <div id="bot-box" class="chat-box hidden">
+      <p>Привет, <span id="user-name">Гость</span>! Чем могу помочь?</p>
+      <button class="btn bot-option" data-action="website">Нужен сайт</button>
+      <button class="btn bot-option" data-action="app">Нужна разработка приложения</button>
+      <p id="bot-response"></p>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero" class="hero-section parallax" data-aos="fade-up">
+    <video autoplay muted loop class="hero-video">
+      <source src="background-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1 class="gradient-text">Добро пожаловать, <span id="hero-name">Гость</span>!</h1>
+      <p class="hero-subtitle novice-text">Индивидуальные решения с гарантией результата за 30 дней или возврат денег.</p>
+      <p class="hero-subtitle pro-text hidden">Современные решения с использованием React, Node.js и CI/CD.</p>
+      <a href="#contact" class="btn primary">Начать сейчас</a>
+      <p id="personal-offer" class="personal-offer hidden">Вы ищете сайт под ключ? Вот наши лучшие кейсы!</p>
+    </div>
+    <div class="social-proof">
+      <p>Нам доверяют:</p>
+      <div class="client-logos">
+        <img src="client1-logo.png" alt="Client 1" class="parallax-item" data-speed="0.2" />
+        <img src="client2-logo.png" alt="Client 2" class="parallax-item" data-speed="0.3" />
+        <img src="client3-logo.png" alt="Client 3" class="parallax-item" data-speed="0.1" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Панель достижений -->
+  <section id="achievements" class="section" data-aos="fade-up">
+    <h2 class="section-title">Наши достижения</h2>
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <p>Проекты</p>
+        <div class="progress-bar">
+          <div class="progress" data-value="85"></div>
+        </div>
+        <span>85+</span>
+      </div>
+      <div class="achievement-card">
+        <p>Клиенты</p>
+        <div class="progress-bar">
+          <div class="progress" data-value="60"></div>
+        </div>
+        <span>60+</span>
+      </div>
+      <div class="achievement-card">
+        <p>Отзывы</p>
+        <div class="progress-bar">
+          <div class="progress" data-value="95"></div>
+        </div>
+        <span>95%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Калькулятор стоимости -->
+  <section id="calculator" class="section" data-aos="fade-up">
+    <h2 class="section-title">Калькулятор стоимости</h2>
+    <form id="cost-calculator" class="calculator-form">
+      <label>Тип проекта:</label>
+      <select id="calc-type">
+        <option value="website">Сайт</option>
+        <option value="app">Приложение</option>
+        <option value="cloud">Облако</option>
+      </select>
+      <label>Сроки (дней):</label>
+      <input type="number" id="calc-deadline" min="1" placeholder="Введите дни" />
+      <label>Технологии:</label>
+      <select id="calc-tech" multiple>
+        <option value="react">React</option>
+        <option value="nodejs">Node.js</option>
+        <option value="flutter">Flutter</option>
+      </select>
+      <button type="submit" class="btn">Рассчитать</button>
+    </form>
+    <p id="calc-result"></p>
+  </section>
+
+  <!-- Услуги -->
+  <section id="services" class="section parallax" data-aos="fade-up">
+    <h2 class="section-title">Наши услуги</h2>
+    <div class="services-grid">
+      <div class="service-card interactive-card" data-aos="zoom-in">
+        <i class="fas fa-laptop-code micro-animated"></i>
+        <h3>Веб-разработка</h3>
+        <p class="novice-text">Адаптивные сайты для роста вашего бизнеса.</p>
+        <p class="pro-text hidden">React, SSR, CI/CD для масштабируемых решений.</p>
+        <a href="#web-service" class="btn service-cta">Подробнее</a>
+        <a href="#contact" class="btn primary">Заказать</a>
+      </div>
+      <div class="service-card interactive-card" data-aos="zoom-in">
+        <i class="fas fa-mobile-alt micro-animated"></i>
+        <h3>Мобильные приложения</h3>
+        <p class="novice-text">Приложения для постоянного контакта с клиентами.</p>
+        <p class="pro-text hidden">Flutter, Native Modules, Fastlane.</p>
+        <a href="#mobile-service" class="btn service-cta">Подробнее</a>
+        <a href="#contact" class="btn primary">Заказать</a>
+      </div>
+      <div class="service-card interactive-card" data-aos="zoom-in">
+        <i class="fas fa-cloud micro-animated"></i>
+        <h3>Облачные решения</h3>
+        <p class="novice-text">Безопасность и масштабируемость данных.</p>
+        <p class="pro-text hidden">AWS, Docker, Kubernetes.</p>
+        <a href="#cloud-service" class="btn service-cta">Подробнее</a>
+        <a href="#contact" class="btn primary">Заказать</a>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item" data-aos="fade-right">
+        <h4>Этап 1: Анализ</h4>
+        <p>Собираем требования</p>
+      </div>
+      <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+        <h4>Этап 2: Прототип</h4>
+        <p>Создаем дизайн</p>
+      </div>
+      <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
+        <h4>Этап 3: Код</h4>
+        <p>Разработка</p>
+      </div>
+      <div class="timeline-item" data-aos="fade-right" data-aos-delay="600">
+        <h4>Этап 4: Релиз</h4>
+        <p>Запуск проекта</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Подробные страницы услуг -->
+  <section id="web-service" class="section service-details hidden" data-aos="fade-up">
+    <h2 class="section-title">Веб-разработка</h2>
+    <p class="novice-text"><strong>Что вы получите:</strong> Адаптивный дизайн, SEO, быстрая загрузка.</p>
+    <p class="pro-text hidden"><strong>Технически:</strong> React, Next.js, SSR, CI/CD pipeline.</p>
+    <img src="web-infographic.png" alt="Инфографика веб-разработки" class="infographic" />
+    <a href="#contact" class="btn primary">Заказать сейчас</a>
+    <button id="focus-web" class="btn focus-btn">Режим фокусировки</button>
+  </section>
+  <section id="mobile-service" class="section service-details hidden" data-aos="fade-up">
+    <h2 class="section-title">Мобильные приложения</h2>
+    <p class="novice-text"><strong>Что вы получите:</strong> Кроссплатформенность, удобный интерфейс.</p>
+    <p class="pro-text hidden"><strong>Технически:</strong> Flutter, Firebase, Fastlane.</p>
+    <img src="mobile-infographic.png" alt="Инфографика приложений" class="infographic" />
+    <a href="#contact" class="btn primary">Заказать сейчас</a>
+    <button id="focus-mobile" class="btn focus-btn">Режим фокусировки</button>
+  </section>
+  <section id="cloud-service" class="section service-details hidden" data-aos="fade-up">
+    <h2 class="section-title">Облачные решения</h2>
+    <p class="novice-text"><strong>Что вы получите:</strong> Безопасность, масштабируемость.</p>
+    <p class="pro-text hidden"><strong>Технически:</strong> AWS Lambda, Docker, Kubernetes.</p>
+    <img src="cloud-infographic.png" alt="Инфографика облака" class="infographic" />
+    <a href="#contact" class="btn primary">Заказать сейчас</a>
+    <button id="focus-cloud" class="btn focus-btn">Режим фокусировки</button>
+  </section>
+
+  <!-- Трекер проектов -->
+  <section id="tracker" class="section" data-aos="fade-up">
+    <h2 class="section-title">Трекер проектов (Demo)</h2>
+    <div class="kanban-board">
+      <div class="kanban-column">
+        <h3>В работе</h3>
+        <div class="kanban-task">Анализ требований</div>
+      </div>
+      <div class="kanban-column">
+        <h3>Разработка</h3>
+        <div class="kanban-task">Фронтенд</div>
+      </div>
+      <div class="kanban-column">
+        <h3>Ревью</h3>
+        <div class="kanban-task">Тестирование</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Портфолио -->
+  <section id="portfolio" class="section" data-aos="fade-up">
+    <h2 class="section-title">Реальные истории успеха</h2>
+    <div class="portfolio-filters">
+      <button class="btn filter-btn active" data-filter="all">Все</button>
+      <button class="btn filter-btn" data-filter="ecommerce">Интернет-магазины</button>
+      <button class="btn filter-btn" data-filter="apps">Приложения</button>
+      <button class="btn filter-btn" data-filter="corporate">Корпоративные сайты</button>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card interactive-card" data-category="ecommerce" data-aos="flip-left">
+        <div class="before-after">
+          <input type="range" class="slider" min="0" max="100" value="50" />
+          <img src="before1.jpg" alt="До" class="before" />
+          <img src="after1.jpg" alt="После" class="after" />
+        </div>
+        <h3>Проект 1: Рост трафика</h3>
+        <p>“Идеальное решение!” — Клиент А</p>
+        <video controls class="video-testimonial">
+          <source src="testimonial1.mp4" type="video/mp4">
+        </video>
+        <a href="#case1" class="btn portfolio-cta">Подробнее</a>
+      </div>
+      <div class="portfolio-card interactive-card" data-category="apps" data-aos="flip-left">
+        <div class="before-after">
+          <input type="range" class="slider" min="0" max="100" value="50" />
+          <img src="before2.jpg" alt="До" class="before" />
+          <img src="after2.jpg" alt="После" class="after" />
+        </div>
+        <h3>Проект 2: Оптимизация</h3>
+        <p>“Супер результат!” — Клиент Б</p>
+        <video controls class="video-testimonial">
+          <source src="testimonial2.mp4" type="video/mp4">
+        </video>
+        <a href="#case2" class="btn portfolio-cta">Подробнее</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Сравнение решений -->
+  <section id="comparison" class="section" data-aos="fade-up">
+    <h2 class="section-title">Сравнение решений</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>WordPress</th>
+          <th>С нуля</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Скорость</td>
+          <td class="interactive-cell" data-info="Средняя">★★★☆☆</td>
+          <td class="interactive-cell" data-info="Высокая">★★★★★</td>
+        </tr>
+        <tr>
+          <td>Гибкость</td>
+          <td class="interactive-cell" data-info="Ограничена плагинами">★★☆☆☆</td>
+          <td class="interactive-cell" data-info="Полная">★★★★★</td>
+        </tr>
+        <tr>
+          <td>Цена</td>
+          <td class="interactive-cell" data-info="Дешевле">★★★★☆</td>
+          <td class="interactive-cell" data-info="Дороже">★★★☆☆</td>
+        </tr>
+      </tbody>
+    </table>
+    <p id="comparison-info"></p>
+  </section>
+
+  <!-- Переделка сайта -->
+  <section id="redesign" class="section" data-aos="fade-up">
+    <h2 class="section-title">Переделай мой старый сайт</h2>
+    <form id="redesign-form" class="redesign-form">
+      <input type="url" id="site-url" placeholder="Вставьте URL вашего сайта" required />
+      <button type="submit" class="btn">Анализировать</button>
+    </form>
+    <p id="redesign-result"></p>
+  </section>
+
+  <!-- Процесс разработки (игра) -->
+  <section id="process-game" class="section" data-aos="fade-up">
+    <h2 class="section-title">Процесс разработки</h2>
+    <div class="game-container">
+      <div class="game-step" data-step="1">
+        <i class="fas fa-search"></i>
+        <p>Анализ</p>
+      </div>
+      <div class="game-step" data-step="2">
+        <i class="fas fa-paint-brush"></i>
+        <p>Дизайн</p>
+      </div>
+      <div class="game-step" data-step="3">
+        <i class="fas fa-code"></i>
+        <p>Фронтенд</p>
+      </div>
+      <div class="game-step" data-step="4">
+        <i class="fas fa-server"></i>
+        <p>Бэкенд</p>
+      </div>
+      <div class="game-step" data-step="5">
+        <i class="fas fa-rocket"></i>
+        <p>Релиз</p>
+      </div>
+    </div>
+    <p id="game-info">Нажмите на шаг, чтобы узнать больше!</p>
+  </section>
+
+  <!-- GitHub/Behance интеграция -->
+  <section id="github" class="section" data-aos="fade-up">
+    <h2 class="section-title">Наши проекты</h2>
+    <div id="github-repos" class="repos-grid"></div>
+  </section>
+
+  <!-- Умный бриф -->
+  <section id="brief" class="section" data-aos="fade-up">
+    <h2 class="section-title">Создайте свой проект</h2>
+    <form id="smart-brief" class="smart-brief">
+      <label>Тип проекта:</label>
+      <select id="project-type">
+        <option value="website">Сайт</option>
+        <option value="app">Приложение</option>
+        <option value="cloud">Облако</option>
+      </select>
+      <label>Что у вас есть?</label>
+      <select id="existing">
+        <option value="none">Ничего</option>
+        <option value="design">Дизайн</option>
+        <option value="idea">Идея</option>
+      </select>
+      <label>Бюджет:</label>
+      <input type="number" id="budget" placeholder="Введите бюджет ($)" />
+      <button type="submit" class="btn">Сформировать ТЗ</button>
+    </form>
+    <p id="brief-result"></p>
+    <div id="badge" class="badge hidden">Вы почти разработчик!</div>
+  </section>
+
+  <!-- О нас -->
+  <section id="about" class="section parallax" data-aos="fade-up">
+    <h2 class="section-title">О нас</h2>
+    <p class="about-text">ApexCode Studios — эксперты с 10-летним опытом.</p>
+    <p class="guarantee"><strong>Гарантия:</strong> Результат за 30 дней или возврат денег.</p>
+    <div class="team-images">
+      <img src="team1.jpg" alt="Команда 1" class="parallax-item" data-speed="0.2" />
+      <img src="team2.jpg" alt="Команда 2" class="parallax-item" data-speed="0.3" />
+    </div>
+  </section>
+
+  <!-- Умный FAQ -->
+  <section id="smart-faq" class="section" data-aos="fade-up">
+    <h2 class="section-title">Часто задаваемые вопросы</h2>
+    <input type="text" id="faq-search" placeholder="Введите ваш вопрос..." />
+    <div id="faq-list">
+      <div class="faq-item" data-keywords="сроки время">
+        <h3>Сколько времени занимает разработка?</h3>
+        <p>От 30 дней в зависимости от сложности проекта.</p>
+      </div>
+      <div class="faq-item" data-keywords="стоимость цена">
+        <h3>Какова стоимость услуг?</h3>
+        <p>От $500 за сайт, точная цена после брифа.</p>
+      </div>
+      <div class="faq-item" data-keywords="технологии стек">
+        <h3>Какие технологии вы используете?</h3>
+        <p>React, Node.js, Flutter, AWS и другие.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Наши технологии -->
+  <section id="tech" class="section" data-aos="fade-up">
+    <h2 class="section-title">Наши технологии</h2>
+    <div class="tech-grid">
+      <div class="tech-card interactive-card" data-tech="React">
+        <img src="react-logo.png" alt="React" />
+        <p>React</p>
+      </div>
+      <div class="tech-card interactive-card" data-tech="Node.js">
+        <img src="nodejs-logo.png" alt="Node.js" />
+        <p>Node.js</p>
+      </div>
+      <div class="tech-card interactive-card" data-tech="Figma">
+        <img src="figma-logo.png" alt="Figma" />
+        <p>Figma</p>
+      </div>
+    </div>
+    <p id="tech-description" class="tech-description"></p>
+  </section>
+
+  <!-- Конструктор проекта -->
+  <section id="constructor" class="section" data-aos="fade-up">
+    <h2 class="section-title">Соберите свой проект</h2>
+    <div class="constructor-form">
+      <label>Тип:</label>
+      <select id="constructor-type">
+        <option value="website">Сайт</option>
+        <option value="app">Приложение</option>
+      </select>
+      <label>Дизайн:</label>
+      <select id="constructor-design">
+        <option value="minimal">Минимализм</option>
+        <option value="modern">Модерн</option>
+      </select>
+      <label>Функции:</label>
+      <select id="constructor-features">
+        <option value="basic">Базовые</option>
+        <option value="advanced">Расширенные</option>
+      </select>
+      <button class="btn" onclick="calculateConstructor()">Рассчитать</button>
+    </div>
+    <p id="constructor-result"></p>
+  </section>
+
+  <!-- Блог -->
+  <section id="blog" class="section" data-aos="fade-up">
+    <h2 class="section-title">Полезный контент</h2>
+    <div class="blog-grid">
+      <div class="blog-card interactive-card" data-aos="fade-right">
+        <h3>Как выбрать стек</h3>
+        <p>Подбираем технологии под ваш проект.</p>
+        <a href="#" class="btn blog-cta">Читать</a>
+        <button class="btn focus-btn" data-focus="blog1">Режим фокусировки</button>
+      </div>
+      <div class="blog-card interactive-card" data-aos="fade-left">
+        <h3>Сколько стоит сайт</h3>
+        <p>Разбираем цены на 2025 год.</p>
+        <a href="#" class="btn blog-cta">Читать</a>
+        <button class="btn focus-btn" data-focus="blog2">Режим фокусировки</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Сравнитель проектов -->
+  <section id="project-comparator" class="section" data-aos="fade-up">
+    <h2 class="section-title">Сравнение проектов</h2>
+    <div class="comparator">
+      <div class="comparator-side">
+        <h3>До</h3>
+        <img src="old-design.jpg" alt="Старый дизайн" />
+      </div>
+      <div class="comparator-side">
+        <h3>После</h3>
+        <img src="new-design.jpg" alt="Новый дизайн" />
+      </div>
+      <button class="btn toggle-comparator">Переключить</button>
+    </div>
+  </section>
+
+  <!-- Динамическая карта прогресса -->
+  <section id="progress-map" class="section" data-aos="fade-up">
+    <h2 class="section-title">Ваш путь к проекту</h2>
+    <div class="progress-map">
+      <div class="map-node" data-section="brief"><i class="fas fa-lightbulb"></i> Идея</div>
+      <div class="map-line"></div>
+      <div class="map-node" data-section="services"><i class="fas fa-clipboard"></i> План</div>
+      <div class="map-line"></div>
+      <div class="map-node" data-section="process-game"><i class="fas fa-drafting-compass"></i> Прототип</div>
+      <div class="map-line"></div>
+      <div class="map-node" data-section="tracker"><i class="fas fa-rocket"></i> Запуск</div>
+      <div class="map-line"></div>
+      <div class="map-node" data-section="contact"><i class="fas fa-tools"></i> Поддержка</div>
+    </div>
+  </section>
+
+  <!-- Лояльность -->
+  <section id="loyalty" class="section" data-aos="fade-up">
+    <h2 class="section-title">Система лояльности</h2>
+    <p>Скидка 15% для новых клиентов!</p>
+    <p>Баллы: <span id="loyalty-points">0</span></p>
+    <a href="#contact" class="btn primary">Получить бонус</a>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact" class="section" data-aos="fade-up">
+    <h2 class="section-title">Свяжитесь с нами</h2>
+    <form class="contact-form">
+      <input type="text" id="name" placeholder="Имя" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <button type="submit" class="btn submit">Отправить</button>
+    </form>
+    <p class="security-info"><i class="fas fa-lock micro-animated"></i> Ваши данные защищены (SSL)</p>
+  </section>
+
+  <!-- Оценка по эмоциям -->
+  <section id="emotion-feedback" class="section" data-aos="fade-up">
+    <h2 class="section-title">Как ты себя чувствуешь?</h2>
+    <div class="emotion-grid">
+      <button class="emotion-btn" data-emotion="happy"><i class="fas fa-smile"></i> Рад</button>
+      <button class="emotion-btn" data-emotion="curious"><i class="fas fa-question"></i> Любопытно</button>
+      <button class="emotion-btn" data-emotion="confused"><i class="fas fa-frown"></i> Смущён</button>
+    </div>
+    <p id="emotion-result"></p>
+  </section>
+
+  <!-- Футер -->
+  <footer class="parallax">
+    <div class="footer-content">
+      <p>© 2025 ApexCode Studios.</p>
+      <div class="socials">
+        <a href="https://t.me/apexcode"><i class="fab fa-telegram-plane micro-animated"></i></a>
+      </div>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Подпишитесь на новости" />
+        <button type="submit" class="btn subscribe">Подписаться</button>
+      </form>
+    </div>
+  </footer>
+
+  <button id="toTop" title="Наверх">↑</button>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>
